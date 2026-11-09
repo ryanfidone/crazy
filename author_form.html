@@ -1,0 +1,10 @@
+{% extends "catalog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>{% if object %}Edit Author{% else %}Add Author{% endif %}</h1>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+{{ form|crispy }}
+<p class="text-muted">A stock image is used if an image is not provided.</p>
+<button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{% endblock %}

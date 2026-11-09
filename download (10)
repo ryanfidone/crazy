@@ -1,0 +1,13 @@
+.idea/
+.venv/
+venv/
+.env
+__pycache__/
+*.py[cod]
+*.log
+db.sqlite3
+media/*
+!media/images/
+!media/images/StockBook.jpg
+!media/images/StockAuthor.jpg
+staticfiles/

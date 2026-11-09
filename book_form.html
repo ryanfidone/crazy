@@ -1,0 +1,10 @@
+{% extends "catalog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>{% if object %}Edit Book{% else %}Add Book{% endif %}</h1>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+{{ form|crispy }}
+<p class="text-muted">A book image will be retrieved from Google Books if one is not uploaded and a matching image exists.</p>
+<button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<h1>{{ author.first_name }} {{ author.last_name }}</h1>
+<p><strong>Date of birth:</strong> {{ author.date_of_birth|default:"Unknown" }} | <strong>Date of death:</strong> {{ author.date_of_death|default:"—" }}</p>
+{% if author.author_image %}<img src="{{ author.author_image.url }}" alt="Portrait of {{ author }}" class="detail-image mb-3">{% endif %}
+<h2>Books</h2>
+{% for book in author.books.all %}<p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></p>{% empty %}<p>No Books Available</p>{% endfor %}
+{% if user.is_superuser %}
+  <a class="btn btn-primary" href="{% url 'author_update' author.pk %}">Edit Author</a>
+  <a class="btn btn-outline-primary" href="{% url 'author_get_books_api' author.pk %}">Get Books From Google Books</a>
+{% endif %}
+{% endblock %}

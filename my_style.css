@@ -1,0 +1,21 @@
+/* Assignment 2 custom CSS */
+h1 {
+    color: #174ea6;
+    font-family: Arial, sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+h2 {
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.detail-image {
+    max-width: 220px;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: .25rem;
+}

@@ -1,0 +1,12 @@
+{% extends "catalog/base.html" %}
+{% block title %}Local Library Home{% endblock %}
+{% block content %}
+<h1>Local Library Home</h1>
+<p>Welcome to the local library. Browse our catalog and see which books are available.</p>
+<div class="row g-3">
+  <div class="col-md-3"><div class="card h-100"><div class="card-body"><h2>{{ num_books }}</h2><p>Books</p><a href="{% url 'book_list' %}">Browse books</a></div></div></div>
+  <div class="col-md-3"><div class="card h-100"><div class="card-body"><h2>{{ num_instances }}</h2><p>Book copies</p></div></div></div>
+  <div class="col-md-3"><div class="card h-100"><div class="card-body"><h2>{{ num_instances_available }}</h2><p>Available copies</p></div></div></div>
+  <div class="col-md-3"><div class="card h-100"><div class="card-body"><h2>{{ num_authors }}</h2><p>Authors</p><a href="{% url 'author_list' %}">Browse authors</a></div></div></div>
+</div>
+{% endblock %}

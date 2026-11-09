@@ -1,0 +1,18 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<h1>{{ book.title }}</h1>
+<p><strong>Author:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p>
+<p><strong>ISBN:</strong> {{ book.isbn }}</p>
+<p><strong>Genres:</strong> {% for genre in book.genre.all %}{{ genre.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+{% if book.book_image %}<img src="{{ book.book_image.url }}" alt="Cover for {{ book.title }}" class="detail-image mb-3">{% endif %}
+<h2>Summary</h2><p>{{ book.summary|default:"No summary is available." }}</p>
+<h2>Copies</h2>
+{% if book.instances.all %}
+<ul>{% for copy in book.instances.all %}<li>{{ copy.get_status_display }} — {{ copy.imprint }}{% if copy.due_back %} (Due: {{ copy.due_back }}){% endif %}</li>{% endfor %}</ul>
+{% else %}<p>No Copies Available</p>{% endif %}
+{% if user.is_superuser %}
+  <a class="btn btn-primary" href="{% url 'book_update' book.pk %}">Edit Book</a>
+  <a class="btn btn-danger" href="{% url 'book_delete' book.pk %}">Delete Book</a>
+  <a class="btn btn-outline-primary" href="{% url 'book_create_copy' book.pk %}">Add a Copy</a>
+{% endif %}
+{% endblock %}
